@@ -1,0 +1,14 @@
+
+.close-modal-btn{
+    max-height: fit-content;
+}
+.view-blocket-link{
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    padding: 0.4em 0.6em;
+    background-color: white;
+    transition: 0.2s;
+  }
+  .view-blocket-link:hover{
+    background-color: rgb(239, 239, 239);
+  }

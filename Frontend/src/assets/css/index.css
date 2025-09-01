@@ -1,0 +1,213 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body, html, #root {
+    height: 100%;
+    margin: 0;
+    /* font-family: Arial, sans-serif; */
+    /* font-family: 'Roboto', sans-serif; */
+    /* font-family: 'Merriweather', serif; */
+    /* font-family: 'Fira Code', monospace; */
+    font-family: 'Oswald', sans-serif;
+
+  }
+  
+  .app-container {
+    display: flex;
+    width: 100%;  /* full width */
+    height: 100%;
+  }
+  
+  .left-panel {
+    background: #222222;
+    color: white;
+    flex: 5;       /* initial flex */
+    min-width: 250px;
+    padding: 20px 20px 100px 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    transition: flex 0.5s ease; /* smooth transition for flex */
+  }
+  .right-panel {
+    position: relative; /* needed for absolute children */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: flex 0.5s ease; /* smooth transition if right panel flex changes */
+    flex: 3; /* initial flex */
+    background-color: #f8f9e2;
+  }
+  
+  h1 {
+    margin-top: 0;
+  }
+
+  .search-list {
+    margin: 20px 0;
+    width: 100%;
+  }
+  
+  .search-item-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .search-item-wrapper h2{
+    font-size: 0.8em;
+    font-weight: 100 !important;
+  }
+
+  .search-item {
+    min-width: 20em;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+    height: fit-content;
+    padding: 1px 50px 1px 15px;
+    /* background: #666; */
+    background: inherit;
+    border-radius: 12px;
+    border: 0.5px solid rgb(176, 176, 176);
+  }
+
+  .new-search{
+    width: 50%;
+  }
+
+  .new-search input {
+    display: block;
+    height: 2.5em;
+    margin-bottom: 10px;
+    padding: 5px 5px 5px 10px;
+    width: 100%;     
+    border-radius: 3px;
+    border: none;
+  }
+  .new-search select {
+    display: block;
+    height: 2.5em;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;     
+    border-radius: 3px;
+    border: none;
+  }
+  
+  .scraping-status,
+  .not-scraping-status {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    position: absolute; /* stack on top of each other */
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin-top: 6em;
+    pointer-events: none; /* disable interaction when hidden */
+    transform: scale(0.95); /* slight shrink when hidden */
+    text-align: center;
+  }
+  .visible {
+    opacity: 1;
+    pointer-events: auto; /* enable interaction */
+    transform: scale(1);
+    text-align: center;
+  } 
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    margin: 20px auto;
+    border: 4px solid #333;
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+
+  .edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ffd700; 
+  }  
+  .add-btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    float: right;
+  }
+  .stop-btn {
+    margin-top: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 7px;
+    border: none;
+    /* background: #d9534f; */
+    border: 2px solid #d9534f;
+    background-color: #2d2d2d;
+    color: white;
+  }
+  .start-btn {
+    margin-top: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 7px;
+    border: none;
+    border: 2px solid #4fd951;
+    background-color: #2d2d2d;
+    color: white;
+  }
+    
+  .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(255, 52, 52);
+    font-size: 0.3em;
+  }
+
+  .notification-on-btn{
+    color: white;
+    transition: 0.2s;
+  }
+  .notification-off-btn{
+    color: rgb(97, 97, 97);
+    transition: 0.2s;
+  }
+  .notification-on-btn:hover{
+    cursor: pointer;
+  }
+  .notification-off-btn:hover{
+    cursor: pointer;
+  }
+  .new-search-btn{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 1px;
+    height: fit-content;
+    color: white;
+    background: inherit;
+    /* border-radius: 12px; */
+    /* border: 0.5px solid rgb(176, 176, 176); */
+    border: none ;
+    text-decoration: underline;
+    cursor: pointer;
+     transition: 0.2s;
+  }
+  .new-search-btn:hover{
+    color: rgb(209, 209, 209);
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  
