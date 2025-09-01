@@ -146,7 +146,7 @@ async function runScrape({ word, location, minPrice, maxPrice }) {
   }
 }
 
-
+// Method to make sure ad is not uploaded more than 15 min ago
 function validateUploadTime(ad) {
     const now = new Date();
     const currentTime = new Intl.DateTimeFormat('en-US', {hour: 'numeric', minute: 'numeric',  hour12: false}).format(now);
@@ -164,6 +164,7 @@ function validateUploadTime(ad) {
     return diffMinutes <= 15 && diffMinutes >= 0; // Return true if ad is not older than 15 minutes
 }
 
+// Method to make sure ad price is within user input price range if it exists
 function validatePrice(ad, minPrice, maxPrice) {
   if (ad.price && ad.price !== "N/A" && (minPrice != null || maxPrice != null)) {
       const priceStr = ad.price.slice(0, -3).replace(/\s/g, "");  
@@ -185,7 +186,7 @@ function validatePrice(ad, minPrice, maxPrice) {
   }
 }
 
-// Get the actual url of the ad
+// Method to get the actual url of the ad
 async function getRealAdUrl(searchUrl) {
   const { data } = await axios.get(searchUrl);
   const $ = cheerio.load(data);
@@ -201,7 +202,7 @@ async function getRealAdUrl(searchUrl) {
   return realUrl || false;
 }
 
-// Find ad image
+// Mewthid to find ad image(s)
 async function getImageFromAd(link) {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
